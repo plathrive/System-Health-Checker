@@ -13,4 +13,21 @@ def check_ram():
     percent_ram = mem.percent
 
     checking = f"Total RAM: {total_ram:.3f} GB\nUsed RAM: {used_ram:.3f} GB\nUsage Percentage: {percent_ram:.2f}%"
+
     return checking
+
+# Function apa yang dipakai untuk ngecek penggunaan disk? 
+# Dan kira-kira attribute apa yang lu butuhkan berdasarkan requirement tadi: 
+# persentase pemakaian, dan warning kalau di atas 80%.
+
+def check_disk():
+    disk = psutil.disk_usage('/')
+    bytes_to_gb = pow(1024, 3)
+    total_disk = disk.total / bytes_to_gb
+    used_disk = disk.used / bytes_to_gb
+    percentage_disk = disk.percent
+
+    if percentage_disk > 80:
+        return f"Warning: Penggunaan disk di atas {percentage_disk:.2f}%\nRemaining Storage: {used_disk:.3f} GB dari {total_disk:.3f} GB."
+    
+    return f"Total Disk (Storage): {total_disk:.3f} GB\nUsed Disk (Storage): {used_disk:.3f} GB\nPercentage: {percentage_disk:.2f}%"
