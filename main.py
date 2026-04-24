@@ -4,7 +4,6 @@ if __name__ == "__main__":
     print("Running system health checker:")
     print("==============================")
     process_input = input_user()
-    print(process_input)
     print("==============================")
     print(check_ram())
     print(check_disk())

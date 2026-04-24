@@ -13,7 +13,7 @@ def check_ram():
         used_ram = mem.used / bytes_to_gb
         percent_ram = mem.percent
 
-        checking = f"Total RAM: {total_ram:.3f} GB\nUsed RAM: {used_ram:.3f} GB\nUsage Percentage: {percent_ram:.2f}%"
+        checking = f"Total RAM: {total_ram:.2f} GB\nUsed RAM: {used_ram:.2f} GB\nUsage Percentage: {percent_ram:.2f}%"
         return checking
 
     except Exception:
@@ -33,9 +33,9 @@ def check_disk():
         percentage_disk = disk.percent
 
         if percentage_disk > 80:
-            return f"Warning: Penggunaan disk di atas {percentage_disk:.2f}%\nRemaining Storage: {used_disk:.3f} GB dari {total_disk:.3f} GB."
+            return f"Warning: Penggunaan disk di atas {percentage_disk:.2f}%\nRemaining Storage: {used_disk:.2f} GB dari {total_disk:.2f} GB."
         
-        return f"Total Disk (Storage): {total_disk:.3f} GB\nUsed Disk (Storage): {used_disk:.3f} GB\nPercentage: {percentage_disk:.2f}%"
+        return f"Total Disk (Storage): {total_disk:.2f} GB\nUsed Disk (Storage): {used_disk:.2f} GB\nPercentage: {percentage_disk:.2f}%"
         
     except Exception:
         print(f"Error: Sistem gagal mengakses data process.")
@@ -45,12 +45,14 @@ def check_disk():
 
 def check_process(running_process):
     try:
+        if running_process == None:
+                raise Exception("Your input is empty!")
         for proc in psutil.process_iter(['pid', 'name']):
             if running_process == proc.info['name']:
-                return f"Found: {proc.info['name']}"
+                return f"Found: {proc.info['name']} is running!"
         return f"System process not found!"
-    except Exception:
-        print(f"Error: Sistem gagal mengakses data process.")
+    except Exception as e:
+        print(e)
 
 # Input user ke running_process
 
@@ -62,6 +64,8 @@ def input_user():
         while process_input:
             if process_input.isnumeric():
                 raise Exception("Your input can't be number!")
+            elif process_input == None:
+                raise Exception("Your input is empty!")
             else:
                 return process_input
 
