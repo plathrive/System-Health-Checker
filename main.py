@@ -1,9 +1,9 @@
-from system_health_checker import check_ram, check_disk, check_process
+from system_health_checker import check_ram, check_disk, check_process, input_user
 
 if __name__ == "__main__":
     print("Running system health checker:")
     print("==============================")
-    process_input = input("Enter system process that you want to check: ")
+    process_input = input_user()
     print(process_input)
     print("==============================")
     print(check_ram())
