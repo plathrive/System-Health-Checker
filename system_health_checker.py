@@ -31,3 +31,12 @@ def check_disk():
         return f"Warning: Penggunaan disk di atas {percentage_disk:.2f}%\nRemaining Storage: {used_disk:.3f} GB dari {total_disk:.3f} GB."
     
     return f"Total Disk (Storage): {total_disk:.3f} GB\nUsed Disk (Storage): {used_disk:.3f} GB\nPercentage: {percentage_disk:.2f}%"
+
+# Tulis check_process() — function ini harus terima nama proses sebagai input, 
+# cek apakah proses itu lagi jalan, dan return pesan yang sesuai: ketemu atau tidak ketemu.
+
+def check_process(running_process):
+    for proc in psutil.process_iter(['pid', 'name']):
+        if running_process == proc.info['name']:
+            return f"Found: {proc.info['name']}"
+    return f"System process not found!"
