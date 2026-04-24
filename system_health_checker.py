@@ -46,11 +46,11 @@ def check_disk():
 def check_process(running_process):
     try:
         if running_process == None:
-                raise Exception("Your input is empty!")
+            raise Exception("Your input is empty!")
         for proc in psutil.process_iter(['pid', 'name']):
             if running_process == proc.info['name']:
                 return f"Found: {proc.info['name']} is running!"
-        return f"System process not found!"
+        return f"System Process: System process not found!"
     except Exception as e:
         print(e)
 
@@ -60,15 +60,13 @@ def input_user():
     try:
         process_input = input("Enter system process that you want to check: ")
         if process_input == "":
-                raise Exception("Your input is empty!")
+            raise Exception("Your input is empty!")
         while process_input:
             if process_input.isnumeric():
-                raise Exception("Your input can't be number!")
+                return f"Your input can't be number!"
             elif process_input == None:
                 raise Exception("Your input is empty!")
-            else:
-                return process_input
-
+            return process_input       
     except Exception as e:
         print(e)
 

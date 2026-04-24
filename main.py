@@ -7,6 +7,13 @@ if __name__ == "__main__":
     print("==============================")
     print(check_ram())
     print(check_disk())
-    print(check_process(process_input))
+
+    if process_input == None:
+        print("System Process: Your input is empty!")
+    elif process_input == "Your input can't be number!":
+        print("System Process: Your input can't be number!")
+    else:
+        print(check_process(process_input))
+
     print("==============================")
     print("Process done!")
