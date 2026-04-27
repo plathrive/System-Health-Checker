@@ -60,12 +60,12 @@ def input_user():
     try:
         process_input = input("Enter system process that you want to check: ")
         if process_input == "":
-            raise Exception("Your input is empty!")
+            return "Your input is empty!"
         while process_input:
             if process_input.isnumeric():
-                return f"Your input can't be number!"
+                return "Your input can't be number!"
             elif process_input == None:
-                raise Exception("Your input is empty!")
+                return "Your input is empty!"
             return process_input       
     except Exception as e:
         print(e)

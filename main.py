@@ -8,7 +8,7 @@ if __name__ == "__main__":
     print(check_ram())
     print(check_disk())
 
-    if process_input == None:
+    if process_input == "Your input is empty!":
         print("System Process: Your input is empty!")
     elif process_input == "Your input can't be number!":
         print("System Process: Your input can't be number!")
